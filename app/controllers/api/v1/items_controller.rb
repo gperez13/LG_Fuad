@@ -17,24 +17,20 @@ module Api
 			def create
 				item = Item.new(item_params)
 
-				if article.save
+				if item.save
 					render json: {status: 'SUCCESS', msg: 'Saved item', data:item}, status: :ok
 				
 				else
 					render json: {status: 'ERROR', msg: 'Item Not Saved', 
 					data:item.errors}, status: :unprocessable_entity
-
 				end
-
 			end
 
 			private
 
-			def article_params
+			def item_params
 				params.permit(:name, :description, :price)
 			end
-
-
 
 
 
